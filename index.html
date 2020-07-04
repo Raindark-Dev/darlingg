@@ -112,28 +112,7 @@ for (i=0;i<displaymax;i++) {
     maxopacity[i]=1
 }
 
-function getpagesize() {
-    windowwidth=parseInt(document.body.clientWidth)
-    windowheight=parseInt(document.body.clientHeight)
-    twidth=Math.floor(circleinnerwidth)
-    theight=Math.floor(circleinnerheight)
-    i_imgcounter=0
-   
-    for (i=0; i<displaymax; i++) {
-        var thisspan=eval("document.getElementById('span"+i+"').style")
-        thisspan.left=(twidth*Math.sin(decrement+i*segment*Math.PI/180)+circleinnerwidth+imgpadding)+"px";
-        thisspan.top=(theight*Math.cos(decrement+i*segment*Math.PI/180)+circleinnerheight+imgpadding)+"px";
-        thisspan.zIndex=parseInt(thisspan.top)
 
-        op=parseInt(100/circleinnerheight*(parseInt(thisspan.top)*0.5))
-        document.getElementById('span'+i).innerHTML="<a href='"+rotatinglink[i_imgcounter]+"'><img border=0 width="+imgwidth+" src='"+rotatingimage[i_imgcounter]+"' id='im"+i_imgcounter+"' onMouseover='stoprotating(this)' onMouseout='restartrotating()'></a><br>"+rotatingtext[i_imgcounter]
-    document.getElementById('span'+i).style.visibility="visible"
-            maxopacity[i]=-1
-            i_imgcounter++
-        if (i_imgcounter>=rotatingimage.length) {
-            i_imgcounter=0
-        }
-    }
    
     rotatetext()
 }
