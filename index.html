@@ -21,12 +21,13 @@ font-size:8pt;
 color:#FFFFFF;
 text-align:center;
 background-image: url(back.jpg);
+background-size: cover;
 top:-1000px;
 }
 </style>
 <!-- END OF STYLE-CONFIGURATION ZONE  -->
 </body>
-<title>Tyara Sayang</title><link href="http://www.pic4ever.com/images/129fs3647527.gif"rel="shortcut icon"  type="image"><body dir="ltr" alink="#00ff00" background=back.jpg" text="#008000" vlink="#00c000"><style type="text/css">body, a, a:hover </style></head>
+<title>Tyara Sayang</title><body dir="ltr" alink="#00ff00" text="#008000" vlink="#00c000"><style type="text/css">body, a, a:hover </style></head>
 <body><br><div style="display:scroll; position:fixed; top:50px; right:-6px;">
 
 <script>
@@ -222,7 +223,7 @@ A:hover {font-size:24; font-weight:bold; color: #FF00FF;}
 </style>
 <script type="text/javascript">
 
-
+TypingText = function(element, interval, cursor, finishedCallback) {
   if((typeof document.getElementById == "undefined") || (typeof element.innerHTML == "undefined")) {
     this.running = true;    // Never run.
     return;
@@ -232,7 +233,7 @@ A:hover {font-size:24; font-weight:bold; color: #FF00FF;}
   this.interval = (typeof interval == "undefined" ? 150 : interval);
   this.origText = this.element.innerHTML;
   this.unparsedOrigText = this.origText;
-
+  this.cursor = (cursor ? cursor : "");
   this.currentText = "";
   this.currentChar = 0;
   this.element.typingText = this;
@@ -298,7 +299,7 @@ TypingText.prototype.run = function() {
       this.currentText += this.origText.charAt(this.currentChar);
     }
     this.element.innerHTML = this.currentText;
-
+    this.element.innerHTML += (this.currentChar < this.origText.length - 1 ? (typeof this.cursor == "function" ? this.cursor(this.currentText) : this.cursor) : "");
     this.currentChar++;
     setTimeout("document.getElementById('" + this.element.id + "').typingText.run()", this.interval);
   } else {
